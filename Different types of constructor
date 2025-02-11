@@ -65,7 +65,7 @@ Cube::Cube(const Cube &obj){
 void Cube::cube_vol() {
     double vol = 0;
     vol = length * height * base;
-    cout<<"The volume of a cube is "<<vol<<endl;
+    cout<<"The volume of a cube is "<<vol<<"\n"<<endl;
 }
 
 int main(){
