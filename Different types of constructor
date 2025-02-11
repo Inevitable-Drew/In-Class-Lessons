@@ -1,0 +1,85 @@
+#include<iostream>
+using namespace std;
+
+class Shape{
+    protected:
+        double length = 0, height = 0, base = 0;
+	double radius = 0;
+    public:
+        void getDimension();
+};
+
+void Shape::getDimension(){
+    if(length > 0 ){
+        cout<<"The length is "<< length<<endl;
+    }
+    if(height > 0 ){
+        cout<<"The height is "<< height<<endl;
+    }
+    if(base > 0 ){
+        cout<<"The base is "<< base<<endl;
+    }
+    if(radius > 0 ){
+        cout<<"The radius is "<< radius<<endl;
+    }
+}
+
+class Cube: public Shape{
+    public:
+        Cube(double side);//constructor overloading
+        Cube(double l, double h);
+        Cube(double l, double h, double b); // constructor
+        Cube(const Cube &obj); //copy constructor
+	void cube_vol();
+        void getDimension();
+};
+
+void Cube::getDimension(){
+     cout<<length<<", "<<height<<", "<<base<<endl;
+}
+
+Cube::Cube(double side){
+    length = side;
+    height = side;
+    base = side;
+} //this is the overloading constructor
+
+Cube::Cube(double l, double h){
+    length = l;
+    height = h;
+    base = l+h;
+}
+
+Cube::Cube(double l, double h, double b){
+    length = l;
+    height = h;
+    base = b;
+}
+
+Cube::Cube(const Cube &obj){
+    length = obj.length;
+    height = obj.height;
+    base = obj.base;
+} //this is the copy constructor
+
+void Cube::cube_vol() {
+    double vol = 0;
+    vol = length * height * base;
+    cout<<"The volume of a cube is "<<vol<<endl;
+}
+
+int main(){
+    Cube smallcube(1, 2, 3);
+    Cube smallcube2(5,1.5);
+    Cube smallcube3(3);
+    cout<<"this is smallcube:"<<endl;
+    smallcube.getDimension();
+    smallcube.cube_vol();
+    cout<<"this is smallcube2:"<<endl;
+    smallcube2.getDimension();
+    smallcube2.cube_vol();
+    cout<<"this is smallcube3:"<<endl;
+    smallcube3.getDimension();
+    smallcube3.cube_vol();
+    return 0;
+}
